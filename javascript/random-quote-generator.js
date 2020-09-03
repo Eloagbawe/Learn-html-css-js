@@ -32,6 +32,6 @@ let quotes = [
 
   function randomQuoteGenerator(){
      var randomNo = Math.round(Math.random() * (quotes.length - 1));
-     document.getElementById("random-quote").innerHTML = quotes[randomNo].quote;
-     document.getElementById("author").innerHTML = `Author: ${quotes[randomNo].author}`;
+     document.getElementById("random-quote").textContent = quotes[randomNo].quote;
+     document.getElementById("author").textContent = `Author: ${quotes[randomNo].author}`;
   }
