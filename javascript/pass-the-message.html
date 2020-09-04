@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <title>Message</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            color: #4a5568;
+            font-family: 'Handlee', cursive;
+        }
+        .main{
+            margin: 10rem 0 0 35rem;
+        }
+        input{
+            padding: 1rem 2rem;
+            font-family: 'Handlee', cursive;
+            color: #4a5568;
+            font-size: large;
+            border: 0.1rem solid #4a5568;
+            width: 12rem;
+        }
+        input:focus{
+            outline:none;
+        }
+        button{
+            margin: 1rem 0 3rem 4.5rem; 
+            padding: 0.5rem 1rem;
+            font-family: 'Handlee', cursive;
+            color: #ffffff;
+            font-weight: bold;
+            display: block;
+            background-color: rgba(61, 135, 136, 0.9);
+            border:none;
+        }
+        button:focus{
+            outline:none;
+        }
+        #messageText{
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <div class = "main">
+    <h2>Please Enter a Message:</h2>
+    <input type="text" placeholder="Input Message" id="message" required>
+    <button id="btn" onclick="showMessage()">Send Message</button>
+    <h3>Last Message Delivered:</h3>
+    <p id="messageText">Hello</p>
+    </div>
+
+    <script>
+      function showMessage(){
+          if (document.getElementById("message").value === ""){
+              alert("Please Enter A Valid Message")
+          }
+          else{
+          document.getElementsByTagName("P")[0].textContent = document.getElementById("message").value;
+          document.getElementById("message").value = "";
+          }
+      }
+    </script>
+</body>
+</html>
