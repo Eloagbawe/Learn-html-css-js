@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <title>Counter</title>
+    <style>
+        body{
+            background-color: #ced4da;
+        }
+        .main{
+            padding: 10rem 0 0 35rem;
+            font-family: 'Handlee', cursive;
+        }
+        h1{
+            font-size: 3rem;
+            color: #2783fb;
+        }
+        #number{
+            font-size: 5rem;
+            padding: 0 0 0 5rem;
+            color: #0157ba;
+        }
+        button{
+            font-family: 'Handlee', cursive;
+            border:none;
+            padding: 1rem;
+            margin-right: 1rem;;
+        }
+        button:focus{
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+     <h1>COUNTER</h1>
+     <p id="number">0</p>
+     <button onclick="countDown()">LOWER COUNT</button>
+     <button onclick="countUp()">ADD COUNT</button>
+    </div>
+
+    <script>
+      var number = Number(document.getElementById("number").textContent);
+      
+      
+      function countDown(){
+          number --;
+          document.getElementById("number").textContent = number;
+          if (number < 0){
+              document.getElementById("number").style.color = "#ff0000";
+          }
+          else if(number > 0){
+            document.getElementById("number").style.color = "#239b76";
+          }
+          else{
+            document.getElementById("number").style.color = "#0157ba";
+          }
+      }
+      function countUp(){
+          number ++;
+          document.getElementById("number").textContent = number;
+          if (number < 0){
+              document.getElementById("number").style.color = "#ff0000";
+          }
+          else if(number > 0){
+            document.getElementById("number").style.color = "#239b76";
+          }
+          else{
+            document.getElementById("number").style.color = "#0157ba"
+          }
+      }
+    </script>
+</body>
+</html>
