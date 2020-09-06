@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet"> -->
+    <title>Background Image Slider</title>
+    <style>
+     
+     .picture{
+         margin:10rem 0 0 25rem;
+         height: 20rem;
+         width: 40rem;
+         border: 0.2rem solid #cf9929;
+         background-image: url("img/1.JPG");
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+     }
+     .btn{
+         margin: 5rem 0 0 25.3rem;
+     }
+     button{
+         width: 10rem;
+         height: 2rem;
+         border: none;
+     }
+     button:focus{
+         outline: none;
+     }
+     #next{
+         margin-left: 20rem;
+     }
+    </style>
+</head>
+<body>
+    <div class = "main">
+    <div class = "picture" id = "pictureDiv"></div>
+    <div class = "btn">
+    <button id="previous" onclick="previous()">&lt;</button>
+    <button id="next" onclick="next()">&gt;</button>
+    </div>
+</div>
+
+<script>
+
+let pictureArr = ['img/1.JPG','img/2.JPG','img/3.PNG'];
+let counter = 0;
+
+function previous(){
+    counter --;
+    if (counter < 0){
+        counter = (pictureArr.length - 1);
+    }
+    document.getElementById("pictureDiv").style.backgroundImage = `url(${pictureArr[counter]})`;
+}
+
+
+function next(){
+    counter ++;
+    if (counter > (pictureArr.length - 1)){
+        counter = 0;
+    }
+    
+    document.getElementById("pictureDiv").style.backgroundImage = `url(${pictureArr[counter]})`;
+    
+}
+</script>
+</body>
+</html>
