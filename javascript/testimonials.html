@@ -9,10 +9,16 @@
      *{
         font-family: 'Handlee', cursive;
      }
-     .picture{
-         margin:10rem 0 0 25rem;
+     .main{
+        margin:10rem 0 0 25rem;
          height: 20rem;
          width: 40rem;
+         border: 0.2rem solid #cf9929;
+     }
+     .picture{
+         margin:2rem 0 0 15rem;
+         height: 5rem;
+         width: 10rem;
          border: 0.2rem solid #cf9929;
          background-image: url("img/1.JPG");
          background-size: cover;
@@ -21,7 +27,9 @@
      }
      .btn{
          margin: 5rem 0 0 25.3rem;
-
+     }
+     #star,#quote,#name{
+        margin: 0.5rem 0 0 18rem;
      }
      button{
          width: 10rem;
@@ -39,17 +47,29 @@
 </head>
 <body>
     <div class = "main">
-    
+    <p id ="name">Jane Doe</p>
     <div class = "picture" id = "pictureDiv"></div>
-    <div class = "btn">
+    <p id="star">2 stars</p>
+    <p id="quote">Quote</p>
+    
+</div>
+<div class = "btn">
     <button id="previous" onclick="previous()">&lt; Previous</button>
     <button id="next" onclick="next()">Next &gt;</button>
     </div>
-</div>
 
 <script>
 
 let pictureArr = ['img/1.JPG','img/2.JPG','img/3.PNG'];
+function Testimonial(name,image,star,quote){
+  this.name = name;
+  this.image = image;
+  this.star = star;
+  this.quote = quote;
+}
+let John = new Testimonial("John Doe","img/1.JPG","3 stars","This is superb");
+let Jane = new Testimonial("Jane Doe","img/2.JPG","4 stars","This is good");
+let Josh = new Testimonial("Josh Doe","img/3.PNG","2 stars","This is great");
 let counter = 0;
 
 function previous(){
