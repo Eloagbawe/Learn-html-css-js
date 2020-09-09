@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet"> 
+    <style>
+      *{
+        font-family: 'Handlee', cursive;
+        color: #182954;
+     }
+     body{
+         padding: 1rem 0 0 5rem;
+     }
+    </style>
+    <title>Contact List Filter</title>
+</head>
+<body>
+    <div class="main">
+        <div class="heading">
+            <h1>Contact List</h1>
+        </div>
+        <div class="btns">
+        <button id="all">All</button>
+        <button id="first">A-E</button>
+        <button id="second">F-J</button>
+        <button id="third">K-O</button>
+        <button id="fourth">P-T</button>
+        <button id="fifth">U-Z</button>
+        </div>
+    </div>
+
+
+<script>
+    let names = ["Jane Doe", "John Doe", "Alison Shepard","Tariq Johnson",
+    "Tasha Raymonds","Keisha Mory","Oghenemaro Okoro","Lorem Ipsum","Kovie Thompson",
+    "Caryn Stone","Christopher Miles","Queen Miles","Zebra Thompson","Joshua Okonofua",
+    "Ozzy Benet","Ivan Mitchel","Faith Kerry","Eleanor James","Gary Mathews","Paul Sutherland",
+    "James Micheal","Karimo James","Lionel Jones","Barry Williams","Bohran Gate",
+    "Darriel Cowel","Zelona Debora","Yvonne Coke","Uyi Igbinosa","Usman Malama",
+    "Aishatu Kareem","Beatrice Donald","Rahmat Bello","Willow Jen","Smith Yasri"];
+    let firstSet = /^[a-e]/ig;
+    let secondSet = /^[f-j]/ig;
+    let thirdSet = /^[k-o]/ig;
+    let fourthSet = /^[p-t]/ig;
+    let fifthSet = /^[u-z]/ig;
+    let arr = [];
+ 
+    var list = document.createElement("UL");
+    document.getElementsByTagName("body")[0].appendChild(list);
+     
+    function createContactList(){
+        arr.sort();
+        for(var j = 0; j < arr.length;j++){
+        let listItem = document.createElement("LI");
+        listItem.style.listStyleType = "none";
+        listItem.style.padding ="0.5rem 0.5rem";
+        listItem.innerHTML = arr[j];
+        list.appendChild(listItem);
+    }
+    }
+    
+    document.getElementById("all").addEventListener("click", function(){
+       document.getElementsByTagName("UL")[0].innerHTML = "";
+       arr = [];
+       for (let i = 0; i < names.length; i++){
+         arr.push(names[i]);
+       }
+       createContactList();
+    })
+
+    document.getElementById("first").addEventListener("click", function(){
+        document.getElementsByTagName("UL")[0].innerHTML = "";
+        arr = [];
+        for (var i = 0; i < names.length; i++){
+        if (firstSet.test(names[i])){
+            arr.push(names[i]);
+        }
+    }
+    createContactList();
+    })
+
+    document.getElementById("second").addEventListener("click", function(){
+        document.getElementsByTagName("UL")[0].innerHTML = "";
+        arr = [];
+        for (var i = 0; i < names.length; i++){
+        if (secondSet.test(names[i])){
+            arr.push(names[i]);
+        }
+    }
+    createContactList();
+    })
+
+    document.getElementById("third").addEventListener("click", function(){
+        document.getElementsByTagName("UL")[0].innerHTML = "";
+        arr = [];
+        for (var i = 0; i < names.length; i++){
+        if (thirdSet.test(names[i])){
+            arr.push(names[i]);
+        }
+    }
+    createContactList();
+    })
+    
+    document.getElementById("fourth").addEventListener("click", function(){
+        document.getElementsByTagName("UL")[0].innerHTML = "";
+        arr = [];
+        for (var i = 0; i < names.length; i++){
+        if (fourthSet.test(names[i])){
+            arr.push(names[i]);
+        }
+    }
+    createContactList();
+    })
+
+    document.getElementById("fifth").addEventListener("click", function(){
+        document.getElementsByTagName("UL")[0].innerHTML = "";
+        arr = [];
+        for (var i = 0; i < names.length; i++){
+        if (fifthSet.test(names[i])){
+            arr.push(names[i]);
+        }
+    }
+    createContactList();
+    })
+</script>
+</body>
+</html>
