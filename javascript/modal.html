@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width:40rem;
+            height: 10rem;
+            padding:0.5rem;
+            margin:1rem;
+            /* border:0.3rem solid grey; */
+        }
+        #image{
+            width: 30rem;
+            height:5rem;
+            background-image: url("img/3.PNG");
+            background-position: center;
+        }
+        .modal{
+            /* border: 0.3rem solid grey;  */
+            display: none;
+            z-index: 1;
+            position:fixed;
+            top: 0;
+            left:0;
+            bottom:0;
+            right:0;
+            width: 80rem;
+            height: 20rem;
+            padding:3rem;
+            /* margin:5rem; */
+        }
+        #modalImage{
+            width: 40rem;
+            height:15rem;
+            background-image: url("img/3.PNG");
+            background-position: center;
+        }
+        p{
+            font-size: 1.5rem;
+        }
+        .previous, .next{
+            margin-top:1rem;
+            margin-right: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class = "main">
+    
+        <div class = "picture" id = "image"></div>
+        <div class = "btn">
+        <button class="previous" onclick="previous()">&lt; Previous</button>
+        <button class="next" onclick="next()">Next &gt;</button>
+        </div>
+    </div>
+
+    <div class="modal">
+    <div id="modalImage">
+    </div>
+    <p>Content</p>
+    <button class="previous" onclick="previous()">&lt; Previous</button>
+    <button class="next" onclick="next()">Next &gt;</button>
+    <button id="close">Close</button>
+    </div>
+
+
+    <script>
+        let pictureArr = ['img/1.JPG','img/2.JPG','img/3.PNG'];
+let counter = 0;
+
+function previous(){
+    counter --;
+    if (counter < 0){
+        counter = (pictureArr.length - 1);
+    }
+    document.getElementById("image").style.backgroundImage = `url(${pictureArr[counter]})`;
+    document.getElementById("modalImage").style.backgroundImage = `url(${pictureArr[counter]})`;
+}
+
+
+function next(){
+    counter ++;
+    if (counter > (pictureArr.length - 1)){
+        counter = 0;
+    }
+    
+    document.getElementById("image").style.backgroundImage = `url(${pictureArr[counter]})`;
+    document.getElementById("modalImage").style.backgroundImage = `url(${pictureArr[counter]})`;
+    
+}
+    document.querySelector("#image").addEventListener("click", function(){
+        document.querySelector(".modal").style.display = "block";
+    })
+    document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".modal").style.display = "none";
+    })
+    </script>
+</body>
+</html>
