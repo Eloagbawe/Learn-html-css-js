@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <title>Todo List</title>
+    <style>
+        *{
+            font-family: 'Handlee', cursive;  
+        }
+        .main{
+            margin: 5rem 0 0 15rem;
+            padding: 5rem 0 10rem 20rem;
+            border: 1px solid black;
+        }
+        input{
+            display: none;
+            padding: 0.5rem 1rem;
+        }
+        input:focus{
+            outline: none;
+        }
+        #addItem{
+            margin-top: 1rem;
+        }
+        #todoList{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <h1>To Do List</h1>
+    <div class = "list">
+        <ul id = "todoList">
+        
+        </ul>
+    </div>
+    <form id = "todoForm">
+    <input type = "text" id = "todo">
+    </form>
+    <button id = "addItem">&plus; Add Item</button>
+    
+    </div>
+
+
+    <script>
+
+
+        document.querySelector("#addItem").addEventListener("click", function(){
+            document.getElementsByTagName("INPUT")[0].style.display = "block";
+        })
+        document.getElementById("todoForm").addEventListener("submit", function(e){
+            e.preventDefault();
+            var listItem = document.createElement("LI");
+            let deleteIcon = document.createElement("SPAN");
+            deleteIcon.setAttribute("class","deleteIcon")
+            deleteIcon.innerHTML = "&times;"
+            deleteIcon.style.marginLeft = "1rem";
+            listItem.textContent = document.getElementById("todo").value;
+            document.getElementById("todo").value = "";
+            listItem.appendChild(deleteIcon);
+            document.getElementById("todoList").appendChild(listItem);
+            document.getElementsByTagName("INPUT")[0].style.display = "none";
+        })
+        document.querySelector(".deleteIcon").addEventListener("click", function(){
+            var previous = deleteIcon.previousSibling;
+            previous.remove();
+            deleteIcon.remove();
+        })
+    </script>
+</body>
+</html>
