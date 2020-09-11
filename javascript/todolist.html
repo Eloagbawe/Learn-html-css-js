@@ -46,8 +46,6 @@
 
 
     <script>
-
-
         document.querySelector("#addItem").addEventListener("click", function(){
             document.getElementsByTagName("INPUT")[0].style.display = "block";
         })
@@ -55,19 +53,21 @@
             e.preventDefault();
             var listItem = document.createElement("LI");
             let deleteIcon = document.createElement("SPAN");
-            deleteIcon.setAttribute("class","deleteIcon")
+            deleteIcon.setAttribute("id","deleteIcon");
             deleteIcon.innerHTML = "&times;"
             deleteIcon.style.marginLeft = "1rem";
+            
+            deleteIcon.addEventListener("click", function(){
+            var previous = deleteIcon.previousSibling;
+            previous.remove();
+            deleteIcon.remove();
+            })
+
             listItem.textContent = document.getElementById("todo").value;
             document.getElementById("todo").value = "";
             listItem.appendChild(deleteIcon);
             document.getElementById("todoList").appendChild(listItem);
             document.getElementsByTagName("INPUT")[0].style.display = "none";
-        })
-        document.querySelector(".deleteIcon").addEventListener("click", function(){
-            var previous = deleteIcon.previousSibling;
-            previous.remove();
-            deleteIcon.remove();
         })
     </script>
 </body>
