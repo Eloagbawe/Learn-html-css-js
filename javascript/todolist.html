@@ -48,6 +48,7 @@
     <script>
         document.querySelector("#addItem").addEventListener("click", function(){
             document.getElementsByTagName("INPUT")[0].style.display = "block";
+            document.querySelector("#addItem").style.display = "none";
         })
         document.getElementById("todoForm").addEventListener("submit", function(e){
             e.preventDefault();
@@ -56,6 +57,7 @@
             deleteIcon.setAttribute("id","deleteIcon");
             deleteIcon.innerHTML = "&times;"
             deleteIcon.style.marginLeft = "1rem";
+            deleteIcon.style.cursor = "pointer";
             
             deleteIcon.addEventListener("click", function(){
             var previous = deleteIcon.previousSibling;
@@ -68,6 +70,7 @@
             listItem.appendChild(deleteIcon);
             document.getElementById("todoList").appendChild(listItem);
             document.getElementsByTagName("INPUT")[0].style.display = "none";
+            document.querySelector("#addItem").style.display = "block";
         })
     </script>
 </body>
