@@ -223,29 +223,41 @@ body {
    let decimal = document.querySelector("#decimal");
    let add = document.querySelector("#add");
    let subtract = document.querySelector("#subtract");
-   let multiply = document.querySelector("multiply");
+   let multiply = document.querySelector("#multiply");
    let divide = document.querySelector("#divide");
    let clear = document.querySelector("#clear");
    let calculate = document.querySelector("#calculate");
    let number = document.getElementsByClassName("number");
    let first = "";
    let second = "";
-   let firstNum = Number(first);
-   let secondNum = Number(second);
    let answer = 0;
 
    for (let i = 0; i < number.length; i++){
      number[i].addEventListener("click", function(){
        first = `${first}${number[i].innerHTML}`;
-       console.log(first);
+       second = `${second}${number[i].innerHTML}`;
      })
    }
    
    add.addEventListener("click", function(){
-     answer = firstNum + 15;
+     answer = Number(first) + Number(second);
+     console.log(answer);
+   })
+   
+   subtract.addEventListener("click", function(){
+     answer = Number(first) - Number(second);
      console.log(answer);
    })
 
+   multiply.addEventListener("click", function(){
+     answer = Number(first) * Number(second);
+     console.log(answer);
+   })
+
+   divide.addEventListener("click", function(){
+     answer = Number(first) / Number(second);
+     console.log(answer);
+   })
 
 </script>
 </body>
