@@ -197,25 +197,56 @@ body {
           <div class="calculator__display">0</div>
     
           <div class="calculator__keys">
-            <button class="key--operator" data-action="add">+</button>
-            <button class="key--operator" data-action="subtract">-</button>
-            <button class="key--operator" data-action="multiply">&times;</button>
-            <button class="key--operator" data-action="divide">÷</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>0</button>
-            <button data-action="decimal">.</button>
-            <button data-action="clear">AC</button>
-            <button class="key--equal" data-action="calculate">=</button>
+            <button class="key--operator" id="add">+</button>
+            <button class="key--operator" id="subtract">-</button>
+            <button class="key--operator" id="multiply">&times;</button>
+            <button class="key--operator" id="divide">÷</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="number">0</button>
+            <button  id="decimal">.</button>
+            <button id="clear">AC</button>
+            <button class="key--equal" id="calculate">=</button>
           </div>
         </div>
       </div>
+
+<script>
+   let display = document.querySelector(".calculator__display");
+   let decimal = document.querySelector("#decimal");
+   let add = document.querySelector("#add");
+   let subtract = document.querySelector("#subtract");
+   let multiply = document.querySelector("multiply");
+   let divide = document.querySelector("#divide");
+   let clear = document.querySelector("#clear");
+   let calculate = document.querySelector("#calculate");
+   let number = document.getElementsByClassName("number");
+   let first = "";
+   let second = "";
+   let firstNum = Number(first);
+   let secondNum = Number(second);
+   let answer = 0;
+
+   for (let i = 0; i < number.length; i++){
+     number[i].addEventListener("click", function(){
+       first = `${first}${number[i].innerHTML}`;
+       console.log(first);
+     })
+   }
+   
+   add.addEventListener("click", function(){
+     answer = firstNum + 15;
+     console.log(answer);
+   })
+
+
+</script>
 </body>
 </html>
