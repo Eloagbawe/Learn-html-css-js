@@ -211,9 +211,9 @@ body {
             <button class="number">2</button>
             <button class="number">3</button>
             <button class="number">0</button>
-            <button  id="decimal">.</button>
+            <button id="decimal">.</button>
             <button id="clear">AC</button>
-            <button class="key--equal" id="calculate">=</button>
+            <button class="key--equal key--operator"  id="calculate">=</button>
           </div>
         </div>
       </div>
@@ -228,36 +228,71 @@ body {
    let clear = document.querySelector("#clear");
    let calculate = document.querySelector("#calculate");
    let number = document.getElementsByClassName("number");
-   let first = "";
-   let second = "";
-   let answer = 0;
-
+   let keyOperator = document.getElementsByClassName("key--operator");
+   let digit = "";
+   let numArr = [];
+  
    for (let i = 0; i < number.length; i++){
      number[i].addEventListener("click", function(){
-       first = `${first}${number[i].innerHTML}`;
-       second = `${second}${number[i].innerHTML}`;
+       digit += `${number[i].textContent}`;
+    
+        display.textContent = `${digit}`;
+    
      })
    }
    
-   add.addEventListener("click", function(){
-     answer = Number(first) + Number(second);
-     console.log(answer);
+  
+   for (let i = 0; i < keyOperator.length; i++){
+     keyOperator[i].addEventListener("click", function(){
+       if (keyOperator[i].id === "add"){
+        digit = `${digit} + `;
+        display.textContent =`${digit}`;
+       }
+       else if (keyOperator[i].id === "subtract"){
+        digit = `${digit} - `;
+        display.textContent =`${digit}`;
+       }
+       else if(keyOperator[i].id === "multiply"){
+        digit = `${digit} x `;
+        display.textContent =`${digit}`;
+       }
+       else if(keyOperator[i].id === "divide"){
+        digit = `${digit} ÷ `;
+        display.textContent =`${digit}`;
+       }
+     })
+   }
+
+   clear.addEventListener("click", function(){
+     digit = "";
+     display.textContent = 0;
+     numArr = [];
+     
    })
    
-   subtract.addEventListener("click", function(){
-     answer = Number(first) - Number(second);
-     console.log(answer);
+   decimal.addEventListener("click", function(){
+     if (!digit.includes(".")){
+     digit = `${digit}.`;
+     }
+     display.textContent = `${digit}`;
    })
 
-   multiply.addEventListener("click", function(){
-     answer = Number(first) * Number(second);
-     console.log(answer);
+   calculate.addEventListener("click", function(){
+    numArr = digit.split(" ");
+        for (let i = 0; i < numArr.length; i++){
+          if (numArr[i] === "x"){
+            numArr[i] = "*";
+          }
+          else if (numArr[i] === "÷"){
+            numArr[i] = "/";
+          }
+        }
+        digit = numArr.join(" ");
+        let answer = eval(digit);
+        display.textContent = `${answer}`;
+        digit = `${answer}`;
    })
-
-   divide.addEventListener("click", function(){
-     answer = Number(first) / Number(second);
-     console.log(answer);
-   })
+   
 
 </script>
 </body>
