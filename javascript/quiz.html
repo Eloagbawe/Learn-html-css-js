@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Quiz</title>
+    <style>
+    .heading{
+        margin-top: 5rem;
+    }
+    .answerOptions{
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+    .controls{
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+    }
+    .question-container{
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+    footer{
+        position: fixed;
+        top:50rem;
+        left: 9rem;
+        
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="heading container">
+            <h1>Quiz Game</h1>
+        </div>
+    
+        <div class="container">
+            <p>Please attempt all Questions</p>
+        </div>
+    </header>
+    
+    <div class="question-container hide container" id="question-container">
+        
+    <div class="questionDiv container">
+        <p id="question">This is a question</p>
+    </div>
+    <div class="answerOptions container" id="answerOptions">
+        <button id="option1" class="options btn btn-light">1</button>
+        <button id="option2" class="options btn btn-light">2</button>
+        <button id="option3" class="options btn btn-light">3</button>
+        <button id="option4" class="options btn btn-light">4</button>
+    </div>
+    </div>
+    
+    <div class ="controls container">
+    
+        <button id="startbtn" class= "btn btn-primary">Start Game</button>
+    
+        <button id="nextBtn" class ="hide btn btn-primary">Next Question</button>
+   
+        <button id="submitBtn" class ="hide btn btn-primary">Submit</button>
+    
+    </div>
+    
+    <div class="scoreDiv container">
+        <p id="score" class="hide">Score:</p>
+    </div>
+    <footer class = "container">
+        <div>
+            <p>2020 &copy; Elo Agbawe</p>
+        </div>
+    </footer> 
+</body>
+</html>
