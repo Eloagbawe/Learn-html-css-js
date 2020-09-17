@@ -27,6 +27,12 @@
         left: 9rem;
         
     }
+    .hide{
+        display:none;
+    }
+    .show{
+        display:block;
+    }
     </style>
 </head>
 <body>
@@ -43,19 +49,19 @@
     <div class="question-container hide container" id="question-container">
         
     <div class="questionDiv container">
-        <p id="question">This is a question</p>
+        <p id="question"></p>
     </div>
     <div class="answerOptions container" id="answerOptions">
-        <button id="option1" class="options btn btn-light">1</button>
-        <button id="option2" class="options btn btn-light">2</button>
-        <button id="option3" class="options btn btn-light">3</button>
-        <button id="option4" class="options btn btn-light">4</button>
+        <button id="option1" class="options btn btn-light"></button>
+        <button id="option2" class="options btn btn-light"></button>
+        <button id="option3" class="options btn btn-light"></button>
+        <button id="option4" class="options btn btn-light"></button>
     </div>
     </div>
     
-    <div class ="controls container">
+    <div class="controls container">
     
-        <button id="startbtn" class= "btn btn-primary">Start Game</button>
+        <button id="startBtn" class= "btn btn-primary">Start Game</button>
     
         <button id="nextBtn" class ="hide btn btn-primary">Next Question</button>
    
@@ -71,5 +77,67 @@
             <p>2020 &copy; Elo Agbawe</p>
         </div>
     </footer> 
+
+    <script>
+      let startBtn = document.getElementById("startBtn");
+      let nextBtn = document.getElementById("nextBtn");
+      let submitBtn = document.getElementById("submitBtn");
+      let questionDiv = document.getElementById("question");
+      let answerOptions = document.getElementById("answerOptions");
+      let questions = [
+    {
+    question: "What is the capital of Nigeria?",
+    answers: ["Kano","Lagos", "Abuja", "FCT"],
+    answer: "FCT",
+    },
+    
+    {
+    question: "Which of these is one of the three major tribes in Nigeria?",
+    answers: ["Yoruba","Isoko","Ijaw","Esan"],
+    answer: "Yoruba",
+    },
+    
+    {
+    question: "What is the meaning of CSS?",
+    answers: ["Condescending style source","Cascading sort source","Cascading style sheet","Conscise style sheet"],
+    answer: "Cascading style sheet",
+    },
+    
+    {
+    question: "Bootstrap is a...?",
+    answers: ["Framework","Library","Both a Framework and Library", "Stylesheet"],
+    answer: "Both a Framework and Library",
+    },
+
+    {
+    question: "Which of these is not a text editor?",
+    answers: ["Visual Studio Code","Brackets","Notepad","HTML"],
+    answer: "HTML",
+    }
+]
+    
+    startBtn.addEventListener("click", function(){
+       questionDiv.style.display = "block";
+       answerOptions.style.display = "block";
+       startBtn.style.display = "none";
+       nextBtn.style.display = "inline";
+       submitBtn.style.display = "inline";
+    });
+    
+    
+    //console.log(questions[Math.floor(Math.random() * (questions.length - 1))].question);
+    
+    let randomQuest = () =>{
+        var newArr = [];
+        var newQuest = questions[Math.floor(Math.random() * (questions.length - 1))].question;
+        for (var i = 0; newArr.length < questions.length; i++){
+            if (newArr.indexOf(newQuest) < 0){
+                newArr.push(newQuest);
+            }
+        }
+        console.log(newArr);
+    }
+     randomQuest();
+    </script>
 </body>
 </html>
