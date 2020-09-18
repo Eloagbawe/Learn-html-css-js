@@ -124,15 +124,19 @@
        submitBtn.style.display = "inline";
     });
     
-    
-    //console.log(questions[Math.floor(Math.random() * (questions.length - 1))].question);
-    
     let randomQuest = () =>{
-        var newArr = [];
-        var newQuest = questions[Math.floor(Math.random() * (questions.length - 1))].question;
-        for (var i = 0; newArr.length < questions.length; i++){
+        let newArr = [];
+        
+        for (var i = 0; i < questions.length; i++){
+            let newQuest = questions[Math.floor(Math.random() * (questions.length))].question;
             if (newArr.indexOf(newQuest) < 0){
                 newArr.push(newQuest);
+            }
+        }
+
+        for (let j = 0; j < questions.length; j++){
+            if (!newArr.includes(questions[j].question)){
+                newArr.push(questions[j].question);
             }
         }
         console.log(newArr);
