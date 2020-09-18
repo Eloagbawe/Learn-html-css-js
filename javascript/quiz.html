@@ -33,6 +33,7 @@
     .show{
         display:block;
     }
+    
     </style>
 </head>
 <body>
@@ -90,6 +91,10 @@
       let restartBtn = document.getElementById("restartBtn");
       let questionText = document.getElementById("question");
       let answerOptions = document.getElementById("answerOptions");
+      let option1 = document.getElementById("option1");
+      let option2 = document.getElementById("option2");
+      let option3 = document.getElementById("option3");
+      let option4 = document.getElementById("option4");
       let scoreDiv = document.getElementById("")
       let randomizedQuestions = [];
       let counter = 0;
@@ -155,6 +160,10 @@
     nextBtn.addEventListener("click", function(){
       counter ++;
       displayQuestions();
+      option1.style.backgroundColor = "#F8F9FA";
+      option2.style.backgroundColor = "#F8F9FA";
+      option3.style.backgroundColor = "#F8F9FA";
+      option4.style.backgroundColor = "#F8F9FA";
     })
     
     let displayQuestions = () => {
@@ -165,7 +174,7 @@
        }
        }
        else{
-       questionText.innerHTML = `Your Quiz is Over`;
+       questionText.innerHTML = `Your Quiz is Over and you scored ${score}/5`;
        answerOptions.style.display = "none";
        startBtn.style.display = "none";
        nextBtn.style.display = "none";
@@ -177,14 +186,85 @@
     restartBtn.addEventListener("click", function(){
         randomizedQuestions = [];
         counter = 0;
+        score = 0;
         randomQuest();
         displayQuestions();
         answerOptions.style.display = "block";
         nextBtn.style.display = "inline";
         submitBtn.style.display = "inline";
         restartBtn.style.display = "none";
+        option1.style.backgroundColor = "#F8F9FA";
+        option2.style.backgroundColor = "#F8F9FA";
+        option3.style.backgroundColor = "#F8F9FA";
+        option4.style.backgroundColor = "#F8F9FA";
     })
-    
+    submitBtn.addEventListener("click", function(){
+        questionText.innerHTML = `You scored ${score}/5`;
+        answerOptions.style.display = "none";
+        startBtn.style.display = "none";
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "none";
+        restartBtn.style.display = "inline"
+    })
+    option1.addEventListener("click", function(){
+        if (option1.textContent === randomizedQuestions[counter].answer){
+            option1.style.backgroundColor = "#239b76";
+            score ++;
+        }
+        else{
+            option1.style.backgroundColor = "#ff0000";
+            for (let i = 0; i < answerOptions.children.length; i++){
+                if (answerOptions.children[i].textContent === randomizedQuestions[counter].answer){
+                    answerOptions.children[i].style.backgroundColor = "#239b76";
+                }
+            }
+        }
+    })
+
+    option2.addEventListener("click", function(){
+        if (option2.textContent === randomizedQuestions[counter].answer){
+            option2.style.backgroundColor = "#239b76";
+            score ++;
+        }
+        else{
+            option2.style.backgroundColor = "#ff0000";
+            for (let i = 0; i < answerOptions.children.length; i++){
+                if (answerOptions.children[i].textContent === randomizedQuestions[counter].answer){
+                    answerOptions.children[i].style.backgroundColor = "#239b76";
+                }
+            }
+        }
+    })
+
+    option3.addEventListener("click", function(){
+        if (option3.textContent === randomizedQuestions[counter].answer){
+            option3.style.backgroundColor = "#239b76";
+            score ++;
+        }
+        else{
+            option3.style.backgroundColor = "#ff0000";
+            for (let i = 0; i < answerOptions.children.length; i++){
+                if (answerOptions.children[i].textContent === randomizedQuestions[counter].answer){
+                    answerOptions.children[i].style.backgroundColor = "#239b76";
+                }
+            }
+        }
+    })
+
+    option4.addEventListener("click", function(){
+        if (option4.textContent === randomizedQuestions[counter].answer){
+            option4.style.backgroundColor = "#239b76";
+            score ++;
+        }
+        else{
+            option4.style.backgroundColor = "#ff0000";
+            for (let i = 0; i < answerOptions.children.length; i++){
+                if (answerOptions.children[i].textContent === randomizedQuestions[counter].answer){
+                    answerOptions.children[i].style.backgroundColor = "#239b76";
+                }
+            }
+        }
+    })
     </script>
 </body>
 </html>
