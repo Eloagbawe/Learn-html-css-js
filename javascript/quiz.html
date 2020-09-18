@@ -9,17 +9,17 @@
     .heading{
         margin-top: 5rem;
     }
-    .answerOptions{
-        margin-top: 3rem;
+    #answerOptions{
+        margin-top: 2rem;
         margin-bottom: 1rem;
     }
     .controls{
         margin-top: 3rem;
         margin-bottom: 5rem;
     }
-    .question-container{
-        margin-top: 5rem;
-        margin-bottom: 5rem;
+    #question-container{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
     footer{
         position: fixed;
@@ -41,37 +41,40 @@
             <h1>Quiz Game</h1>
         </div>
     
-        <div class="container">
+        <div class="container" id = "instruction">
             <p>Please attempt all Questions</p>
         </div>
     </header>
     
-    <div class="question-container hide container" id="question-container">
+    <div class="hide container" id="question-container">
         
     <div class="questionDiv container">
         <p id="question"></p>
     </div>
-    <div class="answerOptions container" id="answerOptions">
+    <div class="container" id="answerOptions">
         <button id="option1" class="options btn btn-light"></button>
         <button id="option2" class="options btn btn-light"></button>
         <button id="option3" class="options btn btn-light"></button>
         <button id="option4" class="options btn btn-light"></button>
     </div>
     </div>
+
+    <div class="hide container" id="scoreDiv">
+        <p id="score"></p>
+    </div>
     
     <div class="controls container">
     
-        <button id="startBtn" class= "btn btn-primary">Start Game</button>
+        <button id="startBtn" class= "btn btn-primary">Start Quiz</button>
     
         <button id="nextBtn" class ="hide btn btn-primary">Next Question</button>
    
         <button id="submitBtn" class ="hide btn btn-primary">Submit</button>
+
+        <button id="restartBtn" class ="hide btn btn-primary">Restart Quiz</button>
     
     </div>
     
-    <div class="scoreDiv container">
-        <p id="score" class="hide">Score:</p>
-    </div>
     <footer class = "container">
         <div>
             <p>2020 &copy; Elo Agbawe</p>
@@ -79,11 +82,18 @@
     </footer> 
 
     <script>
+      let instruction = document.getElementById("instruction");
+      let questionDiv = document.getElementById("question-container");
       let startBtn = document.getElementById("startBtn");
       let nextBtn = document.getElementById("nextBtn");
       let submitBtn = document.getElementById("submitBtn");
-      let questionDiv = document.getElementById("question");
+      let restartBtn = document.getElementById("restartBtn");
+      let questionText = document.getElementById("question");
       let answerOptions = document.getElementById("answerOptions");
+      let scoreDiv = document.getElementById("")
+      let randomizedQuestions = [];
+      let counter = 0;
+      let score = 0;
       let questions = [
     {
     question: "What is the capital of Nigeria?",
@@ -116,32 +126,65 @@
     }
 ]
     
-    startBtn.addEventListener("click", function(){
-       questionDiv.style.display = "block";
-       answerOptions.style.display = "block";
-       startBtn.style.display = "none";
-       nextBtn.style.display = "inline";
-       submitBtn.style.display = "inline";
-    });
-    
-    let randomQuest = () =>{
-        let newArr = [];
-        
+    let randomQuest = () => {
         for (var i = 0; i < questions.length; i++){
-            let newQuest = questions[Math.floor(Math.random() * (questions.length))].question;
-            if (newArr.indexOf(newQuest) < 0){
-                newArr.push(newQuest);
+            let newQuest = questions[Math.floor(Math.random() * (questions.length))];
+            if (randomizedQuestions.indexOf(newQuest) < 0){
+                randomizedQuestions.push(newQuest);
             }
         }
 
         for (let j = 0; j < questions.length; j++){
-            if (!newArr.includes(questions[j].question)){
-                newArr.push(questions[j].question);
+            if (!randomizedQuestions.includes(questions[j])){
+                randomizedQuestions.push(questions[j]);
             }
         }
-        console.log(newArr);
+        return randomizedQuestions;
     }
-     randomQuest();
+     
+     startBtn.addEventListener("click", function(){
+       questionDiv.style.display = "block";
+       startBtn.style.display = "none";
+       nextBtn.style.display = "inline";
+       submitBtn.style.display = "inline";
+       instruction.style.display = "none";
+       randomQuest();
+       displayQuestions();
+    });
+
+    nextBtn.addEventListener("click", function(){
+      counter ++;
+      displayQuestions();
+    })
+    
+    let displayQuestions = () => {
+       if(counter < questions.length){
+       questionText.innerHTML = `${counter + 1}. ${randomizedQuestions[counter].question}`;
+       for (let i = 0; i < randomizedQuestions[counter].answers.length; i++){
+           answerOptions.children[i].textContent = randomizedQuestions[counter].answers[i];
+       }
+       }
+       else{
+       questionText.innerHTML = `Your Quiz is Over`;
+       answerOptions.style.display = "none";
+       startBtn.style.display = "none";
+       nextBtn.style.display = "none";
+       submitBtn.style.display = "none";
+       restartBtn.style.display = "inline"
+       }
+       }
+    
+    restartBtn.addEventListener("click", function(){
+        randomizedQuestions = [];
+        counter = 0;
+        randomQuest();
+        displayQuestions();
+        answerOptions.style.display = "block";
+        nextBtn.style.display = "inline";
+        submitBtn.style.display = "inline";
+        restartBtn.style.display = "none";
+    })
+    
     </script>
 </body>
 </html>
