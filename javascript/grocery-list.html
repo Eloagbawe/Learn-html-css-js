@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery List</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <!-- bootstrap css -->
- <link rel="stylesheet" href="css/bootstrap.min.css">
- <!-- main css -->
- <link rel="stylesheet" href="css/main.css">
- <!-- google fonts -->
- <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-
- <!-- font awesome -->
- <link rel="stylesheet" href="css/all.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
  <title>Grocery List</title>
  <style>
+     #delete{
+         padding-left: 2rem;
+     }
+     .list-container{
+         display: none;
+     }
  </style>
 </head>
 
@@ -36,38 +26,34 @@
     </div>
     <form class="form-inline my-2" id="input-form">
      <input class="form-control form-control-lg  text-capitalize w-75" type='text' placeholder="enter value ..." id="input-value">
-     <button class="btn btn-lg my-2 mx-2 submitBtn" type="submit"><i class="fas fa-pen"></i></button>
+     <button class="btn btn-lg my-2 mx-2 submitBtn" type="submit" id ="add"><i class="fas fa-plus"></i></button>
     </form>
     <div class="list-container my-5">
-     <div class="list-items">
+     <div class="list-items" id="list-items">
       <!-- single item -->
-      <!-- <div class="item my-3 d-flex justify-content-between p-2">
-       <h5 class="item-title text-capitalize">item name</h5>
-       <span class="remove-icon text-danger"><i class="fas fa-trash"></i></span>
-      </div> -->
+      <div class="item my-3 d-flex justify-content-start p-2">
+       <h5 class="item-title text-capitalize"></h5>
+       <span class="remove-icon text-danger"><i id ="delete" class="fas fa-trash"></i></span>
+      </div>
       <!-- end of single item -->
      </div>
 
-     <button class="clearBtn btn-lg text-capitalize w-50 mx-auto btn-outline-danger" button="button">clear items</button>
+     <button class="clearBtn btn-lg text-capitalize w-50 mx-auto btn-primary" button="button">clear items</button>
     </div>
 
    </div>
-
-
   </div>
  </div>
 
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-
-
- <!-- jquery -->
- <script src="js/jquery-3.3.1.min.js"></script>
- <!-- bootstrap js -->
- <script src="js/bootstrap.bundle.min.js"></script>
- <!-- script js -->
- <script src="js/app.js"></script>
-</body>
-
-</html>
+<script>
+    let input = document.getElementById("input-value");
+    let add = document.getElementById("add");
+    let listItems = document.getElementById("list-items");
+</script>
+ 
 </body>
 </html>
