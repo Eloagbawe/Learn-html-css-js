@@ -31,14 +31,14 @@
     <div class="list-container my-5">
      <div class="list-items" id="list-items">
       <!-- single item -->
-      <div class="item my-3 d-flex justify-content-start p-2">
+      <!-- <div class="item my-3 d-flex justify-content-start p-2">
        <h5 class="item-title text-capitalize"></h5>
        <span class="remove-icon text-danger"><i id ="delete" class="fas fa-trash"></i></span>
-      </div>
+      </div> -->
       <!-- end of single item -->
      </div>
 
-     <button class="clearBtn btn-lg text-capitalize w-50 mx-auto btn-primary" button="button">clear items</button>
+     <button class="clearBtn btn-lg text-capitalize w-50 mx-auto btn-primary" id = "clear" button="button">clear items</button>
     </div>
 
    </div>
@@ -50,9 +50,43 @@
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <script>
+    let inputForm = document.getElementById("input-form");
     let input = document.getElementById("input-value");
     let add = document.getElementById("add");
     let listItems = document.getElementById("list-items");
+    let clear = document.getElementById("clear");
+
+    inputForm.addEventListener("submit", function(e){
+        e.preventDefault();
+         document.querySelector(".list-container").style.display = "block";
+         let listItem = document.createElement("DIV");
+         listItem.classList.add("item", "my-3", "d-flex", "justify-content-start", "p-2");
+         let itemTitle = document.createElement("H5");
+         itemTitle.classList.add("item-title", "text-capitalize");
+         let span = document.createElement("SPAN");
+         span.classList.add("remove-icon", "text-danger");
+         let deleteIcon = document.createElement("i");
+         deleteIcon.classList.add("fas","fa-trash")
+         deleteIcon.setAttribute("id","delete")
+
+         deleteIcon.addEventListener("click", function(){
+           listItem.remove();
+        })
+         itemTitle.textContent = input.value;
+         span.appendChild(deleteIcon);
+         listItem.appendChild(itemTitle);
+         listItem.appendChild(span);
+         listItems.appendChild(listItem);
+         input.value = "";         
+    })
+
+    clear.addEventListener("click", function(){
+     listItems.innerHTML = "";
+     document.querySelector(".list-container").style.display = "none";
+
+    })
+
+    
 </script>
  
 </body>
