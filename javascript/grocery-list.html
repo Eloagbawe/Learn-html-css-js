@@ -22,7 +22,7 @@
   <div class="row max-height align-items-center">
    <div class="col-11 mx-auto col-md-10 text-center py-3">
     <h1 class="text-uppercase app-title font-weight-bold mb-5">grocery list</h1>
-    <div class="feedback text-capitalize alert ">
+    <div class="feedback text-capitalize alert">
     </div>
     <form class="form-inline my-2" id="input-form">
      <input class="form-control form-control-lg  text-capitalize w-75" type='text' placeholder="enter value ..." id="input-value">
@@ -55,9 +55,14 @@
     let add = document.getElementById("add");
     let listItems = document.getElementById("list-items");
     let clear = document.getElementById("clear");
+    let feedback = document.querySelector(".feedback");
 
     inputForm.addEventListener("submit", function(e){
-        e.preventDefault();
+         e.preventDefault();
+         if (input.value === ""){
+             alert("Please enter a valid item")
+         }
+         else {
          document.querySelector(".list-container").style.display = "block";
          let listItem = document.createElement("DIV");
          listItem.classList.add("item", "my-3", "d-flex", "justify-content-start", "p-2");
@@ -77,13 +82,20 @@
          listItem.appendChild(itemTitle);
          listItem.appendChild(span);
          listItems.appendChild(listItem);
-         input.value = "";         
+         input.value = "";   
+        
+         let feedbackText = document.createElement("P"); 
+         feedbackText.textContent = "Item sucessfully added!";  
+         feedback.appendChild(feedbackText);  
+         setTimeout(function(){
+           feedback.innerHTML = "";
+         }, 2000)
+         }
     })
 
     clear.addEventListener("click", function(){
      listItems.innerHTML = "";
      document.querySelector(".list-container").style.display = "none";
-
     })
 
     
