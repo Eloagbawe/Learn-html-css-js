@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <title>Flashcard</title>
+    <style>
+     #heading,#question-heading,#answer-heading{
+         color: #3d8788;
+     }
+     #question-input,#answer-input{
+         border: 1px solid #ced4da;
+
+     }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
          <div class="col-11 col-lg-6 my-3">
-          <h3 class="text-capitalize">flashcards</h3>
-          <button class="btn text-capitalize my-2 show-btn" id="show-btn">add question</button>
+          <h3 class="text-capitalize" id="heading">flashcards</h3>
+          <button class="btn text-capitalize my-2 show-btn btn-outline-secondary" id="show-btn">add question</button>
           <div class="card card-body my-3 question-card">
            <!-- close btn -->
            <a href="#" class="close-btn mt-0">
@@ -19,22 +29,22 @@
            </a>
            <!-- end of close btn -->
            <div class="feedback alert w-75 text-capitalize">
-            customer feedback
+            
            </div>
            <form id="question-form">
             <!-- single input -->
-            <h5 class="text-capitalize">question</h5>
+            <h5 class="text-capitalize" id="question-heading">question</h5>
             <div class="form-group">
              <textarea class="w-100" id="question-input" rows="3"></textarea>
             </div>
             <!-- end of single input -->
             <!-- single input -->
-            <h5 class="text-capitalize">answer</h5>
+            <h5 class="text-capitalize" id="answer-heading">answer</h5>
             <div class="form-group">
              <textarea class="w-100" id="answer-input" rows="3"></textarea>
             </div>
             <!-- end of single input -->
-            <button type="submit" class="btn submitBtn text-capitalize w-50">save</button>
+            <button type="submit" class="btn submitBtn text-capitalize w-50 btn-outline-secondary">save</button>
            </form>
           </div>
          </div>
