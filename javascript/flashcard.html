@@ -19,6 +19,13 @@
      .flashcard{
          width: 4rem;
      }
+     #question-card{
+         display: none;
+     }
+     #close{
+         margin-left: 25rem;
+         color: #3d8788;
+     }
     </style>
 </head>
 <body>
@@ -27,15 +34,15 @@
          <div class="col-11 col-lg-6 my-3">
           <h3 class="text-capitalize" id="heading">flashcards</h3>
           <button class="btn text-capitalize my-2 show-btn btn-outline-secondary" id="show-btn">add question</button>
-          <div class="card card-body my-3 question-card">
+          <div class="card card-body my-3 question-card" id ="question-card">
            <!-- close btn -->
            <a href="#" class="close-btn mt-0">
-            <i class="fas fa-window-close"></i>
+            <i class="fas fa-window-close" id="close"></i>
            </a>
            <!-- end of close btn -->
-           <div class="feedback alert w-75 text-capitalize">
+           <!-- <div class="feedback alert w-75 text-capitalize">
             
-           </div>
+           </div> -->
            <form id="question-form">
             <!-- single input -->
             <h5 class="text-capitalize" id="question-heading">question</h5>
@@ -49,7 +56,7 @@
              <textarea class="w-100" id="answer-input" rows="3"></textarea>
             </div>
             <!-- end of single input -->
-            <button type="submit" class="btn submitBtn text-capitalize w-50 btn-outline-secondary">save</button>
+            <button type="submit" class="btn submitBtn text-capitalize w-50 btn-outline-secondary" id="save">save</button>
            </form>
           </div>
          </div>
@@ -71,7 +78,20 @@
       
         </div>
        </div>
-      
+      <script>
+          let showBtn = document.getElementById('show-btn');
+          let questionForm = document.getElementById('question-card');
+          let close = document.getElementById('close');
+          let questionInput = document.getElementById('question-input');
+          let answerInput = document.getElementById('answer-input');
+          let saveBtn = document.getElementById('save');
+          showBtn.addEventListener('click', function(){
+              questionForm.style.display = 'block';
+          })
+          close.addEventListener('click', function(){
+              questionForm.style.display = 'none';
+          })
+      </script>
       
 </body>
 </html>
