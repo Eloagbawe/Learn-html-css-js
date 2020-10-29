@@ -16,9 +16,9 @@
      .show-answer{
         color: #3d8788;   
      }
-     .flashcard{
-         width: 4rem;
-     }
+     /* .flashcard{
+         width: 1rem;
+     } */
      #question-card{
          display: none;
      }
@@ -69,11 +69,11 @@
            <h4 class="text-capitalize">question title?</h4>
            <a href="#" class="text-capitalize my-3 show-answer">show/hide answer</a>
            <h5 class="answer mb-3">question answer</h5>
-           <div class="flashcard-btn d-flex justify-content-between">
+           <div class="flashcard-btn d-flex justify-content">
             <a href="#" id="edit-flashcard" class=" btn my-1 edit-flashcard text-uppercase" data-id="">edit</a>
             <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase">delete</a>
-           </div>
-          </div> -->
+           </div> -->
+          </div>
          </div>
       
         </div>
@@ -85,12 +85,22 @@
           let questionInput = document.getElementById('question-input');
           let answerInput = document.getElementById('answer-input');
           let saveBtn = document.getElementById('save');
+          let newCard = () =>{
+              alert('saved!')
+              let card = document.createElement("DIV");
+              card.classList.add("card","card-body","flashcard","my-3");
+              let question = document.createElement("H4");
+             
+              question.textContent = "question title?";
+              card.appendChild(question);
+          }
           showBtn.addEventListener('click', function(){
               questionForm.style.display = 'block';
           })
           close.addEventListener('click', function(){
               questionForm.style.display = 'none';
           })
+          saveBtn.addEventListener('click', newCard)
       </script>
       
 </body>
