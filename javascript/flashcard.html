@@ -62,8 +62,9 @@
          </div>
         </div>
       
-        <div class="row px-2" id="questions-list">
-         <!-- <div class="col-md-4"> -->
+        <div class="row px-2"id="questions-list" >
+            <!-- <div class="col-11 col-lg-4 my-3" > -->
+             <!-- <div class="col-md-4">  -->
           <!--Template for card data-->
           <!-- <div class="card card-body flashcard my-3">
            <h4 class="text-capitalize">question title?</h4>
@@ -73,7 +74,9 @@
             <a href="#" id="edit-flashcard" class=" btn my-1 edit-flashcard text-uppercase" data-id="">edit</a>
             <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase">delete</a>
            </div> -->
-          </div>
+          <!-- </div> -->
+            </div>
+         
          </div>
       
         </div>
@@ -85,14 +88,73 @@
           let questionInput = document.getElementById('question-input');
           let answerInput = document.getElementById('answer-input');
           let saveBtn = document.getElementById('save');
-          let newCard = () =>{
-              alert('saved!')
-              let card = document.createElement("DIV");
-              card.classList.add("card","card-body","flashcard","my-3");
-              let question = document.createElement("H4");
-             
-              question.textContent = "question title?";
-              card.appendChild(question);
+          let newCard = (e) =>{
+              e.preventDefault();
+              let div = document.createElement("DIV");
+              let cardDiv = document.createElement("DIV");
+              let cardQuestion = document.createElement("H4");
+              let showAnswerLink = document.createElement("A");
+              let cardAnswer = document.createElement("H5");
+              let editDiv = document.createElement("DIV");
+              let editLink = document.createElement("A");
+              let deleteLink = document.createElement("A");
+              
+              div.classList.add("col-md-4");
+              cardDiv.classList.add("card","card-body","flashcard","my-3");
+              cardQuestion.classList.add("text-capitalize");
+              showAnswerLink.classList.add("text-capitalize", "my-3", "show-answer");
+              showAnswerLink.textContent = "Show/Hide Answer";
+              showAnswerLink.setAttribute("href", "#");
+              cardAnswer.classList.add("answer", "mb-3");
+              cardQuestion.textContent = questionInput.value;
+              cardAnswer.textContent = answerInput.value;
+              cardAnswer.style.display = "none";
+              editDiv.classList.add("flashcard-btn", "d-flex", "justify-content");
+              editLink.classList.add("btn", "my-1", "edit-flashcard", "text-uppercase");
+              editLink.setAttribute("id","edit-flashcard");
+              editLink.setAttribute("href","#");
+              editLink.textContent = "edit"
+              deleteLink.classList.add("btn", "my-1", "delete-flashcard", "text-uppercase");
+              deleteLink.setAttribute("id","delete-flashcard");
+              deleteLink.setAttribute("href","#");
+              deleteLink.textContent = "delete";
+
+              editDiv.appendChild(editLink);
+              editDiv.appendChild(deleteLink)
+
+              showAnswerLink.addEventListener('click', function(e){
+                  e.preventDefault()
+                  if(cardAnswer.style.display === "none"){
+                    cardAnswer.style.display = "block";
+                  }
+                  else{
+                    cardAnswer.style.display = "none";
+                  }
+              })
+
+              editLink.addEventListener('click',function(){
+                  questionInput.value = cardQuestion.textContent;
+                  answerInput.value = cardAnswer.textContent;
+                  div.classList.remove("col-md-4");
+                  div.removeChild(cardDiv);
+                  div.innerHTML = "";
+              })
+
+              deleteLink.addEventListener('click',function(){
+                  div.classList.remove("col-md-4");
+                  div.removeChild(cardDiv);
+                  div.innerHTML = "";
+              })
+
+              cardDiv.appendChild(cardQuestion);
+              cardDiv.appendChild(showAnswerLink);
+              cardDiv.appendChild(cardAnswer);
+              cardDiv.appendChild(editDiv);
+              div.appendChild(cardDiv)
+              document.getElementById('questions-list').appendChild(div)
+
+              answerInput.value = "";
+              questionInput.value = "";
           }
           showBtn.addEventListener('click', function(){
               questionForm.style.display = 'block';
