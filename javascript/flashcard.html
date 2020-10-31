@@ -98,7 +98,17 @@
               let editDiv = document.createElement("DIV");
               let editLink = document.createElement("A");
               let deleteLink = document.createElement("A");
-              
+
+              if (questionInput.value === '' && answerInput.value === ''){
+                  window.alert("Please enter a valid question and answer");
+              }
+              else if (questionInput.value === ''){
+                  window.alert("Please enter a valid question");
+              }
+              else if (answerInput.value === ''){
+                  window.alert("Please enter a valid answer")
+              }
+              else{
               div.classList.add("col-md-4");
               cardDiv.classList.add("card","card-body","flashcard","my-3");
               cardQuestion.classList.add("text-capitalize");
@@ -155,7 +165,10 @@
 
               answerInput.value = "";
               questionInput.value = "";
+              }
           }
+
+
           showBtn.addEventListener('click', function(){
               questionForm.style.display = 'block';
           })
