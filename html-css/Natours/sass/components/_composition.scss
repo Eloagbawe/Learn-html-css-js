@@ -30,4 +30,10 @@
             z-index: 20;
         }
     }
+
+    &:hover &__photo:not(:hover){
+        transform: scale(.95) translateY(-.5rem);
+
+    }
+    //composition:hover composition__photo:not(:hover)
 }
