@@ -7,10 +7,24 @@
         height:50rem;
         transition: all .8s;
 
+        &--front {
+            background-color: orangered;
+        }
+
+        &--back {
+            background-color: green;
+            transform: rotateY(180deg);
+        }
+
+    }
+
+    
+    &:hover &__side--front {
+        transform: rotateY(180deg);
     }
     
-    &:hover &__side {
-        transform: rotateY(180deg);
+    &:hover &__side--back {
+        transform: rotateY(0);
     }
 
 }
