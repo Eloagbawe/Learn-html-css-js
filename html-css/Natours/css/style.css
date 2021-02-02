@@ -199,6 +199,11 @@ body {
     transform: rotateY(180deg); }
   .card:hover .card__side--back {
     transform: rotateY(0); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem; }
+    .card__picture--1 {
+      background-image: url("https://raw.githubusercontent.com/jonasschmedtmann/advanced-css-course/master/Natours/starter/img/nat-5.jpg"); }
 
 .composition {
   position: relative; }

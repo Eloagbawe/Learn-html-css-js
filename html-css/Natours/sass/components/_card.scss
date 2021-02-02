@@ -1,4 +1,6 @@
 .card{
+
+    //Functionality
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
@@ -42,7 +44,17 @@
     &:hover &__side--back {
         transform: rotateY(0);
     }
+     
+    //Front side styling
+    &__picture {
+        background-size: cover;
+        height:23rem;
 
+        &--1{
+            background-image: url('https://raw.githubusercontent.com/jonasschmedtmann/advanced-css-course/master/Natours/starter/img/nat-5.jpg');
+        }
+
+    }
 }
 
 //.card:hover .card__side
