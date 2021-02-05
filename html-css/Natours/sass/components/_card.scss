@@ -7,9 +7,6 @@
     height:50rem;
 
     &__side {
-        background-color: orangered;
-        color:#fff;
-        font-size: 2rem;
         height:50rem;
         transition: all .8s ease;
         position: absolute;
@@ -51,12 +48,18 @@
         background-size: cover;
         height: 23rem;
         background-blend-mode: screen;
+        -webkit-clip-path:polygon(0 0, 100% 0, 100% 85%,0, 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%,0 100%);
 
         &--1{
             background-image:  linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),url("https://raw.githubusercontent.com/jonasschmedtmann/advanced-css-course/master/Natours/starter/img/nat-5.jpg");
         }
 
+    }
+
+    &__heading{
+        font-size: 2.8rem;
+        font-weight: 300;
     }
 }
 
