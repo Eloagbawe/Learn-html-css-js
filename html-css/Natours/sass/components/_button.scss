@@ -32,6 +32,16 @@
             background-color: $color-white;
         }
     }
+
+    &--green{
+        background-color: $color-primary;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
     &::after{
        content: "";
        display: inline-block;
