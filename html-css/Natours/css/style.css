@@ -331,7 +331,10 @@ body {
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  transform: skewX(-12deg); }
+  .story > * {
+    transform: skewX(12deg); }
   .story__shape {
     width: 15rem;
     height: 15rem;
@@ -340,9 +343,11 @@ body {
     shape-outside: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
-    transform: translate(-3rem); }
+    transform: translate(-3rem) skewX(12deg); }
   .story__img {
-    width: 100%; }
+    height: 100%; }
+  .story__text {
+    transform: skewX(12deg); }
 
 .header {
   height: 95vh;
